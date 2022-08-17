@@ -19,6 +19,9 @@
                 <h1 class="text-center">Sección 2 Manipulación del Dom</h1>
                 <p>Ejecutar código en determinada página</p>
             </div>
+            <div class="alert alert-primary" role="alert">
+                <p class="text-center fw-bold">Usando el método jQuery is()</p>
+            </div>
         </div>
     </div>
     <script>
@@ -57,6 +60,17 @@
     }*/
     //Forma corta
     $("h1").length && console.log("El elemento existe");
+
+    /*############################################  Usando el método jQuery is()  ############################################################*/
+    var $buscaClase = $('.fw-bold');
+    //Verifica si es un parrafo
+    $buscaClase.is('p') && console.log("Es un parrafo");
+    //Verifica si el parrafo tiene la clase text-center
+    $buscaClase.is('.text-center') && console.log("El parrafo si tiene la clase css de text-center");
+    $buscaClase.is(':not(:visible)') && console.log("El parrafo esta oculto");
+    $buscaClase.animate({'width': 200}, 1000)
+    //Es animado
+    $buscaClase.is(':animated') && console.log("Es animado");
     </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
