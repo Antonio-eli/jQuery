@@ -49,6 +49,14 @@
     });
 
     route.run();
+
+    /*############################################  Uso del operador lógico AND  ############################################################*/
+    //Forma extensa
+    /*if ($("h1").length) {
+        console.log("El elemento existe");
+    }*/
+    //Forma corta
+    $("h1").length && console.log("El elemento existe");
     </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
