@@ -41,6 +41,18 @@
                     <li class="list-group-item">And a fifth one</li>
                 </ul>
             </div>
+
+            <div class="col-md-12 mt-3">
+                <h2 class="text-center fw-light">Modificando links y colocando íconos</h2>
+                <ul class="list-group" id="links">
+                    <li class="list-group-item">
+                        <a href="01-manipulacionDom(document.ready).html">ir a 01-manipulacionDom(document.ready)</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://www.youtube.com/">Ir a https://www.youtube.com/</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <script>
@@ -123,8 +135,16 @@
                 'height': 50
             }
         });
-
         div.appendTo('body')
+        /*############################################  Modificando links y colocando íconos  ############################################################*/
+        console.log('%c Modificando links y colocando íconos ', 'background: #0B5345; color: #F9F9F9 ');
+        $("#links a").each( function(){
+            if( this.hostname != location.hostname){
+                $(this).append('<img class="ms-3" src="img/external-link.png"/>')
+                        .attr('target', '_blank');
+            }
+        })
+        
     </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
