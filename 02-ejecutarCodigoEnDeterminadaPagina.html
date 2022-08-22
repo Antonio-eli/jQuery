@@ -35,60 +35,68 @@
         </div>
     </div>
     <script>
-    var route = {
-        _routes : {},
-        add : function( url, action ){
-            this._routes[url] = action;
-        },
-        run : function(){
-            $.each( this._routes, function(patron){
-                if (location.href.match(patron)) {
-                    //Puedo ejecutar cualquier codigo
-                    this();
-                }
-            });
+        var route = {
+            _routes: {},
+            add: function(url, action) {
+                this._routes[url] = action;
+            },
+            run: function() {
+                $.each(this._routes, function(patron) {
+                    if (location.href.match(patron)) {
+                        //Puedo ejecutar cualquier codigo
+                        this();
+                    }
+                });
+            }
         }
-    }
-    route.add( '02-ejecutarCodigoEnDeterminadaPagina.html', function(){
-        console.log("Este código, solo funciona en la página 02-ejecutarCodigoEnDeterminadaPagina.html");
-    });
+        route.add('02-ejecutarCodigoEnDeterminadaPagina.html', function() {
+            console.log("Este código, solo funciona en la página 02-ejecutarCodigoEnDeterminadaPagina.html");
+        });
 
-    route.add( 'about.html', function(){
-        console.log("Este código, solo funciona en la página about.html");
-    });
+        route.add('about.html', function() {
+            console.log("Este código, solo funciona en la página about.html");
+        });
 
-    route.add( '.*.html', function(){
-        console.log("Este código, solo funciona en cualquier página html");
-    });
+        route.add('.*.html', function() {
+            console.log("Este código, solo funciona en cualquier página html");
+        });
 
-    route.run();
+        route.run();
 
-    /*############################################  Uso del operador lógico AND  ############################################################*/
-    //Forma extensa
-    /*if ($("h1").length) {
-        console.log("El elemento existe");
-    }*/
-    //Forma corta
-    $("h1").length && console.log("El elemento existe");
+        /*############################################  Uso del operador lógico AND  ############################################################*/
+        //Forma extensa
+        /*if ($("h1").length) {
+            console.log("El elemento existe");
+        }*/
+        //Forma corta
+        $("h1").length && console.log("El elemento existe");
 
-    /*############################################  Usando el método jQuery is()  ############################################################*/
-    var $buscaClase = $('.fw-bold');
-    //Verifica si es un parrafo
-    $buscaClase.is('p') && console.log("Es un parrafo");
-    //Verifica si el parrafo tiene la clase text-center
-    $buscaClase.is('.text-center') && console.log("El parrafo si tiene la clase css de text-center");
-    $buscaClase.is(':not(:visible)') && console.log("El parrafo esta oculto");
-    $buscaClase.animate({'width': 200}, 1000)
-    //Es animado
-    $buscaClase.is(':animated') && console.log("Es animado");
+        /*############################################  Usando el método jQuery is()  ############################################################*/
+        var $buscaClase = $('.fw-bold');
+        //Verifica si es un parrafo
+        $buscaClase.is('p') && console.log("Es un parrafo");
+        //Verifica si el parrafo tiene la clase text-center
+        $buscaClase.is('.text-center') && console.log("El parrafo si tiene la clase css de text-center");
+        $buscaClase.is(':not(:visible)') && console.log("El parrafo esta oculto");
+        $buscaClase.animate({
+                'width': 200
+            }, 1000)
+            //Es animado
+        $buscaClase.is(':animated') && console.log("Es animado");
 
-/*############################################  Contar cuantos elementos hay en el DOM  ############################################################*/
-    var cuantosHay = $("li").length
-    console.log("Hay", cuantosHay);
-    if (condition) {
-        
-    }
-    
+        /*############################################  Contar cuantos elementos hay en el DOM  ############################################################*/
+        var cuantosHay = $("li").length
+        console.log("Hay", cuantosHay, "elementos li");
+        /*############################################  Definir la function existe()  ############################################################*/
+        console.log('%c function existe(); ', 'background: #0B5345; color: #F9F9F9 ');
+
+        /*if ($("h1").length > 0) {
+            console.log("El elemento existe");
+        }*/
+        $.fn.existe = function() {
+            return this.length > 0;
+        }
+        console.log($("h1").existe() ? "Exite" : "No exite");
     </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
