@@ -53,8 +53,35 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="col-md-12 mt-3">
+                <h2 class="text-center fw-light">Dominando el método end( )</h2>
+                <ul class="list-group mt-4" id="desayuno">
+                    <li class="list-group-item active huevos" aria-current="true">no</li>
+                    <li class="list-group-item tostadas">no</li>
+                    <li class="list-group-item jugo">no</li>
+                </ul>
+            </div>
+            <div class="col-md-12 mt-3">
+                <h2 class="text-center fw-light">Rompiendo los iframes</h2>
+                <div class="ratio ratio-16x9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/8rWmJcmVWiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-12 mt-3">
+                <h2 class="text-center fw-light">Hacer un contenido editable, incluyendo el estilo</h2>
+                <h3 class="badge bg-dark text-wrap" style="width: 45rem;">Titulo editable</h3>
+            </div>
         </div>
     </div>
+    <style>
+        .circle {
+            position: fixed;
+            width: 140px;
+            height: 140px;
+            background: #A9DFBF;
+        }
+    </style>
     <script>
         var route = {
             _routes: {},
@@ -126,25 +153,69 @@
         var div = $('<div>', {
             'class': "azul-grande",
             'css': {
-                'background-color': 'blue'
+                'background-color': '#17A589'
             },
-            'width': 30,
-            'height': 30,
+            'width': 1000,
+            'height': 5,
             'animate': {
                 'width': 250,
-                'height': 50
+                'height': 5
             }
         });
         div.appendTo('body')
-        /*############################################  Modificando links y colocando íconos  ############################################################*/
+            /*############################################  Modificando links y colocando íconos  ############################################################*/
         console.log('%c Modificando links y colocando íconos ', 'background: #0B5345; color: #F9F9F9 ');
-        $("#links a").each( function(){
-            if( this.hostname != location.hostname){
-                $(this).append('<img class="ms-3" src="img/external-link.png"/>')
-                        .attr('target', '_blank');
-            }
-        })
-        
+        $("#links a").each(function() {
+                if (this.hostname != location.hostname) {
+                    /*$(this).append('<img class="ms-3" src="img/external-link.png"/>')
+                        .attr('target', '_blank');*/
+                }
+            })
+            /*############################################  Dominando el metodo end()  ############################################################*/
+            /*$(".desayuno").text("Si")
+            $(".huevos").text("Si")
+            $(".tostadas").text("Si")
+            $(".jugo").text("Si")*/
+        var $desayuno = $("#desayuno");
+        $desayuno.find('.huevos').text('Si').end()
+            .find('.tostadas').text('Si').end()
+            .find('.jugo').text('Si').end();
+        /*############################################  Prevenir el click derecho y crear un circulo  ############################################################*/
+        $(function() {
+            $(document).on('contextmenu', function(e) {
+                e.preventDefault();
+                console.log('Menu mostrado', e.offsetX, e.offsetY);
+                $('.circle').remove();
+                let div = $('<div>', {
+                    'class': 'circle',
+                    'css': {
+                        'top': e.offsetX,
+                        'left': e.offsetY
+                    },
+                    'animate': {
+                        'border-radius': '70px'
+                    }
+                });
+                div.appendTo('body');
+            });
+        });
+        /*############################################  Rompiendo los iframes  ############################################################*/
+        if (window != window.top) {
+            window.top.location = window.location;
+        }
+        /*############################################Separar elementos de un URL usando anchor tags############################################################*/
+        var url = 'https://articulo.mercadolibre.com.mx/MLM-883382263-casco-kov-abatible-con-luz-led-stelar-gafas-dot-regalo-_JM#reco_item_pos=2&reco_backend=machinalis-homes-pdp-boos&reco_backend_type=function&reco_client=home_navigation-trend-recommendations&reco_id=3f14ed6a-ee82-442e-a420-d5e420ae2eec&c_id=/home/navigation-trends-recommendations/element&c_element_order=3&c_uid=5ab50407-9a8a-4daa-8d76-d3f6dfd4ab73#comentario';
+        var a = $('<a>', {
+            href: url
+        });
+        console.log('Host name:', a.prop('hostname'));
+        console.log('Path:', a.prop('pathname'));
+        console.log('Query:', a.prop('search'));
+        console.log('Protocolo:', a.prop('protocol'));
+        console.log('hash:', a.prop('hash'));
+        console.log(a.prop('search').split("&"));
+        /*############################################ Hacer un contenido editable, incluyendo el estilo ############################################################*/
+        $("h3").attr("contentEditable", true)
     </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
