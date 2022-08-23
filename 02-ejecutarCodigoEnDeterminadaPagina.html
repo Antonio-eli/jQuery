@@ -64,6 +64,14 @@
             </div>
         </div>
     </div>
+    <style>
+        .circle {
+            position: fixed;
+            width: 140px;
+            height: 140px;
+            background: #A9DFBF;
+        }
+    </style>
     <script>
         var route = {
             _routes: {},
@@ -135,13 +143,13 @@
         var div = $('<div>', {
             'class': "azul-grande",
             'css': {
-                'background-color': 'blue'
+                'background-color': '#17A589'
             },
-            'width': 30,
-            'height': 30,
+            'width': 1000,
+            'height': 5,
             'animate': {
                 'width': 250,
-                'height': 50
+                'height': 5
             }
         });
         div.appendTo('body')
@@ -149,8 +157,8 @@
         console.log('%c Modificando links y colocando íconos ', 'background: #0B5345; color: #F9F9F9 ');
         $("#links a").each(function() {
                 if (this.hostname != location.hostname) {
-                    $(this).append('<img class="ms-3" src="img/external-link.png"/>')
-                        .attr('target', '_blank');
+                    /*$(this).append('<img class="ms-3" src="img/external-link.png"/>')
+                        .attr('target', '_blank');*/
                 }
             })
             /*############################################  Dominando el metodo end()  ############################################################*/
@@ -162,6 +170,25 @@
         $desayuno.find('.huevos').text('Si').end()
             .find('.tostadas').text('Si').end()
             .find('.jugo').text('Si').end();
+        /*############################################  Prevenir el click derecho y crear un circulo  ############################################################*/
+        $(function() {
+            $(document).on('contextmenu', function(e) {
+                e.preventDefault();
+                console.log('Menu mostrado', e.offsetX, e.offsetY);
+                $('.circle').remove();
+                let div = $('<div>', {
+                    'class': 'circle',
+                    'css': {
+                        'top': e.offsetX,
+                        'left': e.offsetY
+                    },
+                    'animate': {
+                        'border-radius': '70px'
+                    }
+                });
+                div.appendTo('body');
+            });
+        });
     </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
