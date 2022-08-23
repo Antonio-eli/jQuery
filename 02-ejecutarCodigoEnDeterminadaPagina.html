@@ -53,6 +53,15 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="col-md-12 mt-3">
+                <h2 class="text-center fw-light">Dominando el método end( )</h2>
+                <ul class="list-group mt-4" id="desayuno">
+                    <li class="list-group-item active huevos" aria-current="true">no</li>
+                    <li class="list-group-item tostadas">no</li>
+                    <li class="list-group-item jugo">no</li>
+                </ul>
+            </div>
         </div>
     </div>
     <script>
@@ -136,15 +145,23 @@
             }
         });
         div.appendTo('body')
-        /*############################################  Modificando links y colocando íconos  ############################################################*/
+            /*############################################  Modificando links y colocando íconos  ############################################################*/
         console.log('%c Modificando links y colocando íconos ', 'background: #0B5345; color: #F9F9F9 ');
-        $("#links a").each( function(){
-            if( this.hostname != location.hostname){
-                $(this).append('<img class="ms-3" src="img/external-link.png"/>')
+        $("#links a").each(function() {
+                if (this.hostname != location.hostname) {
+                    $(this).append('<img class="ms-3" src="img/external-link.png"/>')
                         .attr('target', '_blank');
-            }
-        })
-        
+                }
+            })
+            /*############################################  Dominando el metodo end()  ############################################################*/
+            /*$(".desayuno").text("Si")
+            $(".huevos").text("Si")
+            $(".tostadas").text("Si")
+            $(".jugo").text("Si")*/
+        var $desayuno = $("#desayuno");
+        $desayuno.find('.huevos').text('Si').end()
+            .find('.tostadas').text('Si').end()
+            .find('.jugo').text('Si').end();
     </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
